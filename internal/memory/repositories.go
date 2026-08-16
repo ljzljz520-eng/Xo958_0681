@@ -117,7 +117,10 @@ func NewMemberNotes(seed []MemberNoteSeed) *MemberNotes {
 func (r *MemberNotes) FindByAccountID(accountID string) (shop.MemberNote, error) {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
-	record := r.records[accountID]
+	record, ok := r.records[accountID]
+	if !ok {
+		return nil, nil
+	}
 	return record, nil
 }
 
