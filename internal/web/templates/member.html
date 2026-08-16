@@ -1,0 +1,12 @@
+{{define "content"}}
+<h1>{{.Member.Name}}，欢迎回来</h1>
+<article class="member-note">
+  {{if .Member.Empty}}
+  <h2>会员专属说明</h2>
+  <p>尚无专属说明</p>
+  {{else}}
+  <h2>{{.Member.NoteTitle}}</h2>
+  <p>{{.Member.NoteBody}}</p>
+  {{end}}
+</article>
+{{end}}

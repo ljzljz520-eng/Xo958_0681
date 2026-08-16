@@ -1,0 +1,14 @@
+{{define "content"}}
+<h1>一块皂，一段慢下来的故事</h1>
+<p class="intro">小批量冷制、足期熟成。浏览每块手工皂的创作故事、复合香型与当期价格。</p>
+<section class="grid" aria-label="手工皂商品">
+  {{range .Soaps}}
+  <article>
+    <h2><a href="/soaps/{{.Slug}}">{{.Name}}</a></h2>
+    <p class="scent">香型：{{.Scent}}</p>
+    <p>{{.Story}}</p>
+    <p class="price">{{money .PriceCents}}</p>
+  </article>
+  {{end}}
+</section>
+{{end}}

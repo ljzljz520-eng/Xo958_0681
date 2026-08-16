@@ -1,0 +1,9 @@
+{{define "content"}}
+<p><a href="/">返回全部手工皂</a></p>
+<article>
+  <h1>{{.Soap.Name}}</h1>
+  <p class="scent">香型：{{.Soap.Scent}}</p>
+  <p>{{.Soap.Story}}</p>
+  <p class="price">{{money .Soap.PriceCents}}</p>
+</article>
+{{end}}

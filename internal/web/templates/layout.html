@@ -1,0 +1,46 @@
+{{define "layout"}}<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}} · 拾香手工皂</title>
+  <style>
+    :root { color-scheme: light; font-family: ui-serif, Georgia, "Noto Serif SC", serif; color: #26342b; background: #f6f3eb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header { border-bottom: 1px solid #c9c5b9; background: #fff; }
+    nav, main { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    nav { min-height: 64px; display: flex; align-items: center; gap: 20px; }
+    nav a:first-child { margin-right: auto; font-size: 21px; font-weight: 700; }
+    a { color: #145f54; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    main { padding: 48px 0 64px; }
+    h1 { font-size: clamp(32px, 7vw, 62px); line-height: 1.05; margin: 0 0 16px; }
+    h2 { font-size: 23px; margin: 0 0 10px; }
+    p { line-height: 1.75; }
+    .intro { max-width: 640px; font-size: 18px; margin-bottom: 36px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    article { background: #fff; border: 1px solid #d6d2c7; padding: 22px; border-radius: 6px; }
+    .scent { color: #76551e; font-weight: 700; }
+    .price { font-size: 19px; font-weight: 700; }
+    form.auth { max-width: 440px; display: grid; gap: 14px; }
+    label { display: grid; gap: 6px; font-weight: 700; }
+    input { width: 100%; border: 1px solid #9f9b90; border-radius: 4px; padding: 11px 12px; font: inherit; background: #fff; }
+    button { border: 0; border-radius: 4px; padding: 11px 16px; font: inherit; font-weight: 700; color: #fff; background: #145f54; cursor: pointer; }
+    nav form { margin: 0; }
+    nav button { padding: 7px 10px; }
+    .error { color: #9c2f24; }
+    .success { color: #176b40; }
+    .member-note { max-width: 660px; }
+    @media (max-width: 520px) { nav { gap: 12px; flex-wrap: wrap; padding: 12px 0; } main { padding-top: 34px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="主导航">
+      <a href="/">拾香手工皂</a>
+      {{if .Viewer}}<a href="/member">会员说明</a><form method="post" action="/logout"><button type="submit">退出</button></form>{{else}}<a href="/register">注册</a><a href="/login">登录</a>{{end}}
+    </nav>
+  </header>
+  <main>{{template "content" .}}</main>
+</body>
+</html>{{end}}
