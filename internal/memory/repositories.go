@@ -118,6 +118,9 @@ func (r *MemberNotes) FindByAccountID(accountID string) (shop.MemberNote, error)
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 	record := r.records[accountID]
+	if record == nil {
+		return nil, nil
+	}
 	return record, nil
 }
 
